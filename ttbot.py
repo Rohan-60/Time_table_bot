@@ -3,7 +3,11 @@ from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler, ContextTypes
 from datetime import datetime
 import asyncio
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
+BOT_TOKEN = os.getenv('BOT_TOKEN')
 # Enable logging
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO
@@ -284,7 +288,7 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
 def main() -> None:
     """Start the bot."""
     # Replace 'YOUR_BOT_TOKEN' with your actual bot token from BotFather
-    application = Application.builder().token('8110593551:AAEym3x78ffkKjgVCNzTtCWkpH5Xni9M6-E').build()
+    application = Application.builder().token(BOT_TOKEN).build()
 
     # Add handlers
     application.add_handler(CommandHandler("start", start))
